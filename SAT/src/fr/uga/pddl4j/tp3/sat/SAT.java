@@ -1,3 +1,5 @@
+package src.fr.uga.pddl4j.tp3.sat;
+
 import fr.uga.pddl4j.heuristics.state.StateHeuristic;
 import fr.uga.pddl4j.parser.DefaultParsedProblem;
 import fr.uga.pddl4j.parser.RequireKey;
@@ -9,19 +11,18 @@ import fr.uga.pddl4j.problem.*;
 import fr.uga.pddl4j.problem.operator.Action;
 import fr.uga.pddl4j.problem.operator.Condition;
 import fr.uga.pddl4j.problem.operator.ConditionalEffect;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.PriorityQueue;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.util.PropertySource.Comparator;
+
 import picocli.CommandLine;
 
-import java.util.*;
-
-/**
- * The class is an example. It shows how to create a simple A* search planner able to
- * solve an ADL problem by choosing the heuristic to used and its weight.
- *
- * @author D. Pellier
- * @version 4.0 - 30.11.2021
- */
 @CommandLine.Command(name = "SAT",
     version = "SAT 1.0",
     description = "Solves a specified planning problem using Monte-Carlo search strategy.",
@@ -464,3 +465,4 @@ public class SAT extends AbstractPlanner {
     }
     
 }
+
