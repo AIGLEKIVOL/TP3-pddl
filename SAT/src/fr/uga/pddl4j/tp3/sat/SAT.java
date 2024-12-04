@@ -14,6 +14,7 @@ import fr.uga.pddl4j.problem.operator.ConditionalEffect;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -241,14 +242,14 @@ public class SAT extends AbstractPlanner {
     }
 
     /**
-     * Creates a new A* search planner with the default configuration.
+     * Creates a new SAT search planner with the default configuration.
      */
     public SAT() {
         this(Planner.getDefaultConfiguration());
     }
 
     /**
-     * Creates a new A* search planner with a specified configuration.
+     * Creates a new SAT search planner with a specified configuration.
      *
      * @param configuration the configuration of the planner.
      */
@@ -276,11 +277,11 @@ public class SAT extends AbstractPlanner {
         final State init = new State(problem.getInitialState());
 
         // We initialize the closed list of nodes (store the nodes explored)
-        final Set<Node> close = new HashSet<>();
+        final Set<Node> close = new HashSet<Node>();
 
         // We initialize the opened list to store the pending node according to function f
         final double weight = this.getHeuristicWeight();
-        final PriorityQueue<Node> open = new PriorityQueue<>(100, new Comparator<Node>() {
+        final PriorityQueue<Node> open = new PriorityQueue(100, new Comparator() {
             public int compare(Node n1, Node n2) {
                 double f1 = weight * n1.getHeuristic() + n1.getCost();
                 double f2 = weight * n2.getHeuristic() + n2.getCost();
