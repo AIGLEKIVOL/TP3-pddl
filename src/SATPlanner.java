@@ -1,5 +1,3 @@
-package src.fr.uga.pddl4j.tp3.sat;
-
 import fr.uga.pddl4j.heuristics.state.StateHeuristic;
 import fr.uga.pddl4j.parser.DefaultParsedProblem;
 import fr.uga.pddl4j.parser.RequireKey;

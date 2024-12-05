@@ -1,5 +1,3 @@
-package src.fr.uga.pddl4j.tp3.sat;
-
 import java.util.HashMap;
 import java.util.Map;
 
