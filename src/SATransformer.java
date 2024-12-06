@@ -32,15 +32,17 @@ public class SATransformer {
         encodeGoalState(problem, solver);
         encodeActions(problem, solver);
 
+        System.out.println(solver.toString());
         return solver;
     }
 
     private void encodeInitialState(Problem problem, ISolver solver) throws ContradictionException {
         BitVector initialState = problem.getInitialState().getPositiveFluents();
         for (int i = 0; i < initialState.size(); i++) {
-            if (initialState.get(i)) { // Check if the fluent is true
-                int var = fluentToVar(i, 0); // Map the fluent index to a SAT variable
-                solver.addClause(new VecInt(new int[] { var }));
+            if (initialState.get(i)) {
+                int var = fluentToVar(i, 0);
+                if(var!=0)
+                    solver.addClause(new VecInt(new int[] { var }));
             }
         }
     }
@@ -48,7 +50,7 @@ public class SATransformer {
         BitVector goalState = problem.getGoal().getPositiveFluents();
         for (int i = 0; i < goalState.size(); i++) {
             if (goalState.get(i)) {
-                int var = fluentToVar(i, Integer.MAX_VALUE); // Arbitrary max horizon step
+                int var = fluentToVar(i, Integer.MAX_VALUE);
                 solver.addClause(new VecInt(new int[] { var }));
             }
         }
